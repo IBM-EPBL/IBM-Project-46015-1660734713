@@ -9,7 +9,6 @@ app = Flask(__name__)
 
 
 
-
 @app.route('/home')
 def home():
     return render_template("home.html")
@@ -21,7 +20,7 @@ def login():
         password = request.form['password']
         sql = "select * from user where username=? and password=?"
         stmt = ibm_db.prepare(conn,sql)
-        ibm_db.bind_param(stmt, 1,username)
+        ibm_db.bind_param(stmt,1,username)
         ibm_db.bind_param(stmt, 2, password)
         ibm_db.execute(stmt)
         dic = ibm_db.fetch_assoc(stmt)
@@ -30,9 +29,9 @@ def login():
         requests = []
         if dic:
             role = dic['ROLE']
-            sql = "select * from user where blood_group=?"
+            sql = "select NAME,AGE,SEX,BLOOD_TYPE from user where blood_group=?"
             stmt = ibm_db.prepare(conn, sql)
-            ibm_db.bind_param(stmt,1,username)
+            ibm_db.bind_param(stmt, 1, username)
             ibm_db.execute(stmt)
             dic = ibm_db.fetch_assoc(stmt)
 
