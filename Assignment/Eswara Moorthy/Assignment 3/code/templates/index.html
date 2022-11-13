@@ -1,0 +1,39 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html>
+   <head>
+      <link rel="stylesheet" href="https://ehkbbucket.s3.jp-tok.cloud-object-storage.appdomain.cloud/index.css">
+    </head>
+   <body>
+      <a href="/">HOME</a>
+<a href="/uploader">Upload</a>
+<a href="/deletefile">Delete</a>
+<br><hr>
+<h1>IBM Object Storage</h1>
+      {% for row in files %}
+         <div class ="box">
+            <h3>Filename : {{row}} </h3>
+            <img src="https://ehkbbucket.s3.jp-tok.cloud-object-storage.appdomain.cloud/{{row}}" width="150px"></td>
+         </div>
+      {% endfor %}
+   </body>
+   <script>
+      window.watsonAssistantChatOptions = {
+        integrationID: "08d0687f-764c-44b7-a0a4-386574b6a60f", // The ID of this integration.
+        region: "au-syd", // The region your integration is hosted in.
+        serviceInstanceID: "f19afbbf-c398-4641-a5ad-f3f0064eca20", // The ID of your service instance.
+        onLoad: function(instance) { instance.render(); }
+      };
+      setTimeout(function(){
+        const t=document.createElement('script');
+        t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+        document.head.appendChild(t);
+      });
+    </script>
+    </html>
